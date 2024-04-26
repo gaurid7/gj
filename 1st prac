@@ -1,0 +1,33 @@
+clc; clear;
+c1 = [1, 1, 1, 1]; 
+c2 = [1, -1, 1, -1];
+c3 = [1, 1, -1, -1]; 
+c4 = [1, -1, -1, 1];
+disp('Enter the data bits:'); 
+d1 = input('Enter D1: ');
+d2 = input('Enter D2: ');
+d3 = input('Enter D3: ');
+d4 = input('Enter D4: ');
+r1 = c1 .* d1;
+r2 = c2 .* d2; 
+r3 = c3 .* d3;
+r4 = c4 .* d4;
+resultant_channel = r1 + r2 + r3 + r4; 
+disp('Resultant Channel:'); 
+disp(resultant_channel);
+channel = input('Enter the station to listen for C1=1, C2=2, C3=3, C4=4: ');
+if channel == 1 then 
+    rc = c1; 
+elseif channel == 2 then 
+    rc = c2;
+elseif channel == 3 then 
+    rc = c3;
+elseif channel == 4 then 
+    rc = c4;
+end
+inner_product = resultant_channel .* rc; 
+disp('Inner Product:'); 
+disp(inner_product); 
+data = sum(inner_product) / length(inner_product); 
+disp('Data bit that was sent:'); 
+disp(data);
